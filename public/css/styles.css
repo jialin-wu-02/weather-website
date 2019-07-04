@@ -5,16 +5,13 @@ body {
 
 .main-content {
     display: flex;
-    width: 100vw;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
-    margin-top: 120px;
 }
 
 header {
-    margin-top: 16px;
-    margin-bottom: 48px;
+    margin-top: 100px;
+    margin-bottom: 100px;
     text-align: center;
 }
 
@@ -34,10 +31,10 @@ header a {
 }
 
 .search-form {
+    position: relative;
     width: 100%;
     display: flex;
     flex-direction: row;
-    /* align-items: center; */
     justify-content: center;
 }
 
@@ -52,7 +49,8 @@ header a {
     border-radius: 25px;
     cursor: pointer;
     transition: all .2s;
-    font-weight: 300;
+    font-weight: 500;
+    letter-spacing: .5px;
 }
 
 .search-input:focus, .search-input:hover{
@@ -62,13 +60,17 @@ header a {
 
 .search-button {
     position: absolute;
-    top: 100px;
-    left: 100px;
+    left: 85vw;
+    top: 16%;
 }
 
+.search-button:focus, .search-button:active {
+    outline: none;
+}
 
 footer {
     color: #888888;
     border-top: 1px solid #eeeeee;
+    margin-top: 7vh;
     padding: 16px 0;
 }
