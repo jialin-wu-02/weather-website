@@ -1,3 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    outline: none;
+}
+
 body {
     color: #333333;
     font-family: arial;
@@ -10,7 +17,7 @@ body {
 }
 
 header {
-    margin: 88px 0px;
+    margin: 150px 0px 100px 0px;
     text-align: center;
 }
 
@@ -23,7 +30,6 @@ header a {
     color: #888888;
     font-size: 18px;
     margin-right: 16px;
-    text-decoration: none;
 }
 
 .image {
@@ -55,7 +61,6 @@ header a {
 
 .search-input:focus, .search-input:hover{
     background-color: rgb(190, 190, 190);
-    outline: none;
 }
 
 .search-button {
@@ -71,6 +76,23 @@ header a {
 footer {
     color: #888888;
     border-top: 1px solid #eeeeee;
-    margin-top: 7vh;
+    margin-top: 100px;
     padding: 16px 0;
+}
+
+/* Weather Page */
+.current-weather {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+}
+
+.text-container > h2 {
+    margin-bottom: 5px;
+}
+
+.text-container > p {
+    font-size: 18px;
+    font-weight: 100;
 }
