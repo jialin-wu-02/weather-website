@@ -49,39 +49,16 @@ app.get('/weather', (req, res) => {
             if (error) {
                 return res.send({error});
             }
-            console.log(forecast);
             res.render('weather', {
                 title: location,
                 name: "Alex Wu",
-                forecast,
+                currently: forecast.currently,
+                hourly: forecast.hourly,
+                daily: forecast.daily,
             })
         });
     });
 })
-
-// app.get('/weather', (req, res) => {
-//     if (!req.query.address) {
-//         return res.send({
-//             error: "No address entered"
-//         })
-//     }
-//     geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
-//         if (error) {
-//             return res.send({error})
-//         }
-//         forecast(longitude, latitude, (error, forecast) => {
-//             if (error) {
-//                 return res.send({error});
-//             }
-//             console.log(forecast);
-//             res.send({
-//                 location,
-//                 forecast,
-//                 address: req.query.address
-//             })
-//         });
-//     });
-// })
 
 app.get('*', (req, res) => {
     res.render('404', {

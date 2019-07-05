@@ -10,7 +10,10 @@
 <body>
     <div class="main-content">
         {{>header}}
-            <p> {{forecast}}</p>
+        {{#with currently}}
+        <img src="/img/{{icon}}.png" alt="{{icon}}" style="width: 150px">
+        <p> Current Weather is {{summary}}. Temperature is around {{ temperature }} Celcius.</p>
+        {{/with}}
         {{>footer}}
     </div>
     
