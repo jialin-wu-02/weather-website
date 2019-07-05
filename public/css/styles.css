@@ -10,8 +10,7 @@ body {
 }
 
 header {
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin: 88px 0px;
     text-align: center;
 }
 
@@ -22,6 +21,7 @@ h1 {
 
 header a {
     color: #888888;
+    font-size: 18px;
     margin-right: 16px;
     text-decoration: none;
 }
@@ -50,7 +50,7 @@ header a {
     cursor: pointer;
     transition: all .2s;
     font-weight: 500;
-    letter-spacing: .5px;
+    letter-spacing: 1px;
 }
 
 .search-input:focus, .search-input:hover{
