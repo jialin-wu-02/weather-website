@@ -85,7 +85,10 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 400px;
+}
+
+.text-container {
+    margin-left: 20px;
 }
 
 .text-container > h2 {
@@ -95,4 +98,8 @@ footer {
 .text-container > p {
     font-size: 18px;
     font-weight: 100;
+}
+
+#chartContainer {
+    margin-top: 100px;
 }

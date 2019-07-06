@@ -35,6 +35,23 @@ app.get('/about', (req, res) => {
     })
 })
 
+app.get('/forecast', (req, res) => {
+    geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
+        if (error) {
+            return res.send({error})
+        }
+        forecast(longitude, latitude, (error, forecast) => {
+            if (error) {
+                return res.send({error});
+            }
+            res.send({
+                hourly: forecast.hourly,
+                daily: forecast.daily,
+            })
+        });
+    });
+})
+
 app.get('/weather', (req, res) => {
     if (!req.query.address) {
         return res.send({
@@ -53,7 +70,6 @@ app.get('/weather', (req, res) => {
                 title: location,
                 name: "Alex Wu",
                 currently: forecast.currently,
-                hourly: forecast.hourly,
                 daily: forecast.daily,
             })
         });
