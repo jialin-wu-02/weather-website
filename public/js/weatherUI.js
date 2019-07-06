@@ -10,24 +10,55 @@ fetch("/forecast?address=" + document.title).then((response) => {
 
 const loadChart = (weatherData) => {
     let dataPoints = [];
+    let labels = []
     for (var i = 0; i < 24; i++) {
-        dataPoints[i] = {y: weatherData.hourly[i].temperature};
+        dataPoints[i] = weatherData.hourly[i].temperature;
+        labels[i] = i;
     }
-    var chart = new CanvasJS.Chart("chartContainer", {
-        animationEnabled: true,
-        theme: "light2",
-        title:{
-            text: "Today's Temperature"
+    var ctx = document.getElementById('hourlyChart');
+    var hourlyChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels,
+            datasets: [{
+                label: 'Temperature',
+                data: dataPoints,
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgba(153, 102, 255, 1)', 
+                borderWidth: 2
+            }]
         },
-        axisY:{
-            includeZero: false
-        },
-        data: [{        
-            type: "line",       
-            dataPoints
-        }]
+        options: {
+            title: {
+                display: true,
+                text: "Temperature for the Next 24 Hours",
+                fontSize: 24,
+                fontFamily: "Arial"
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
     });
-    chart.render();
+    // var chart = new CanvasJS.Chart("chartContainer", {
+    //     animationEnabled: true,
+    //     theme: "light2",
+    //     title:{
+    //         text: "Today's Temperature"
+    //     },
+    //     axisY:{
+    //         includeZero: false
+    //     },
+    //     data: [{        
+    //         type: "line",       
+    //         dataPoints
+    //     }]
+    // });
+    // chart.render();
 }
 
 // window.onload = function () {

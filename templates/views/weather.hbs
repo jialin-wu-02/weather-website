@@ -21,11 +21,12 @@
             <p>{{daily.0.summary}}</p>
             </div>
         </div>
-            <div id="chartContainer" style="height: 300px; width: 60%;"></div>
+        <div id="chart-container">
+            <canvas id="hourlyChart" width="800" height="400"></canvas>
+        </div>
         {{>footer}}
     </div>
-
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
     <script src="/js/weatherUI.js"></script>
 </body>
 </html>
