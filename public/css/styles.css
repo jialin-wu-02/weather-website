@@ -103,3 +103,17 @@ footer {
 #chartContainer {
     margin-top: 100px;
 }
+
+
+/* About Page */
+.about-text {
+    font-size: 25px;
+    color: grey;
+    text-align: center;
+    line-height: 40px;
+}
+
+.about-text a {
+    color: rgb(0, 0, 85);
+    text-decoration: underline;
+}
