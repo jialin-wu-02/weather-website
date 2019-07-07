@@ -100,7 +100,7 @@ footer {
     font-weight: 100;
 }
 
-#hourlyChart {
+#hourlyChart, #dailyChart {
     margin-top: 100px;
 }
 

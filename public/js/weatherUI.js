@@ -9,11 +9,13 @@ fetch("/forecast?address=" + document.title).then((response) => {
 });
 
 const loadChart = (weatherData) => {
+    let d = new Date();
     let dataPoints = [];
     let labels = []
+    let hour = d.getHours();
     for (var i = 0; i < 24; i++) {
         dataPoints[i] = weatherData.hourly[i].temperature;
-        labels[i] = i;
+        labels[i] = (i + hour) % 24 + ":00";
     }
     var ctx = document.getElementById('hourlyChart');
     var hourlyChart = new Chart(ctx, {
@@ -21,7 +23,7 @@ const loadChart = (weatherData) => {
         data: {
             labels,
             datasets: [{
-                label: 'Temperature',
+                label: 'Celsius Degree',
                 data: dataPoints,
                 backgroundColor: 'rgba(153, 102, 255, 0.2)',
                 borderColor: 'rgba(153, 102, 255, 1)', 
@@ -44,50 +46,42 @@ const loadChart = (weatherData) => {
             }
         }
     });
-    // var chart = new CanvasJS.Chart("chartContainer", {
-    //     animationEnabled: true,
-    //     theme: "light2",
-    //     title:{
-    //         text: "Today's Temperature"
-    //     },
-    //     axisY:{
-    //         includeZero: false
-    //     },
-    //     data: [{        
-    //         type: "line",       
-    //         dataPoints
-    //     }]
-    // });
-    // chart.render();
+    dataPoints = [];
+    labels = []
+    let day = d.getDay();
+    const week = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"];
+    for (var i = 0; i < 7; i++) {
+        dataPoints[i] = (weatherData.daily[i].temperatureHigh + weatherData.daily[i].temperatureLow) / 2;
+        labels[i] = week[(day + i) % 7];
+    }
+    console.log(dataPoints);
+    var dc = document.getElementById('dailyChart');
+    var dailyChart = new Chart(dc, {
+        type: 'bar',
+        data: {
+            labels,
+            datasets: [{
+                label: 'Celsius Degree',
+                data: dataPoints,
+                backgroundColor: 'rgba(250, 102, 102, 0.3)',
+                borderColor: 'rgba(250, 102, 102, 1)', 
+                borderWidth: 2
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "Temperature for the Next Seven Days",
+                fontSize: 24,
+                fontFamily: "Arial"
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
 }
-
-// window.onload = function () {
-//     var chart = new CanvasJS.Chart("chartContainer", {
-//         animationEnabled: true,
-//         theme: "light2",
-//         title:{
-//             text: "Today's Temperature"
-//         },
-//         axisY:{
-//             includeZero: false
-//         },
-//         data: [{        
-//             type: "line",       
-//             dataPoints: [
-//                 { y: 450 },
-//                 { y: 414},
-//                 { y: 520 },
-//                 { y: 460 },
-//                 { y: 450 },
-//                 { y: 500 },
-//                 { y: 480 },
-//                 { y: 480 },
-//                 { y: 410 },
-//                 { y: 500 },
-//                 { y: 480 },
-//                 { y: 510 }
-//             ]
-//         }]
-//     });
-//     chart.render();
-// }
