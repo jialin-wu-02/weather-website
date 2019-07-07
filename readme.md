@@ -1,6 +1,5 @@
 # Weather Website
 
 ## Features
-1. Current Weather
-2. Weather for the next seven days presented in a range column chart using CanvasJS
-<!-- https://canvasjs.com/javascript-range-column-range-bar-chart/ -->
+1. Display current weather, current temperature, and a summary of today's weather.
+2. Forecast the temperature for the next 24 hours and the next seven days.
